@@ -8,3 +8,4 @@ python-multipart
 mangum
 pytest
 requests
+python-dotenv

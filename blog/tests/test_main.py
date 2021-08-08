@@ -9,7 +9,7 @@ def test_read_main():
     response = client.get("/")
     response_body = response.json()
     assert response.status_code == 200
-    assert response_body["message"] == "Hello!"
+    assert response_body["message"] == "This is our secret key:Super"
 
 
 def test_read_main_docs():
