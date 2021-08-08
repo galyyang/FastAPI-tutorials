@@ -4,22 +4,16 @@ orbs:
   aws-cli: circleci/aws-cli@2.0.3
 
 jobs:
-  build-and-test:  # This is the name of the job, feel free to change it to better match what you're trying to do!
+  build-and-test:
     docker:
       - image: cimg/python:3.8
     steps:
       - checkout
-#      - python/install-packages:
-#          pkg-manager: pip
-#          # app-dir: ~/project/package-directory/  # If you're requirements.txt isn't in the root directory.
-#          # pip-dependency-file: test-requirements.txt  # if you have a different name for your requirements file, maybe one that combines your runtime and test requirements.
       - run:
           name: Setup python venv
           command: |
             virtualenv -p python3.8 env
             echo "source ./env/bin/activate" >> $BASH_ENV
-#            python3 -m venv venv
-#            . venv/bin/activate
       - run:
           name: Install Dependencies
           command:
@@ -59,7 +53,7 @@ jobs:
           command: aws lambda update-function-code --function-name serverless-fastapi-lamda --s3-bucket cicd-fastapi --s3-key function.zip
 
 
-workloads:
+workfoads:
   build-test-and-deploy:
     jobs:
       - build-and-test:
