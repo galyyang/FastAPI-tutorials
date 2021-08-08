@@ -50,12 +50,16 @@ jobs:
           name: Run tests
           # This assumes pytest is installed via the install-package step above
           command: pytest
-#      - run:
-#          name: Create Zip archive of depencencies
-#          # This assumes pytest is installed via the install-package step above
-#          command: |
-#            cd /home/circleci/.pyenv/versions/3.8.11/lib/python3.8/site-packages
-#            zip -r9
+      - run:
+          name: Create Zip archive of depencencies
+          command: |
+            cd env/lib/python3.8/site-packages
+            zip -r9 ../../../../function.zip .
+      - run:
+          name: App app to Zip archive
+          command: |
+            zip -g .function.zip -r blog
+            zip -g .function.zip blog.db
 
 workloads:
   build-test-and-deploy:
