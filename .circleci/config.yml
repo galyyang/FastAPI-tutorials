@@ -58,7 +58,6 @@ jobs:
       - run:
           name: App app to Zip archive
           command: |
-            pwd
             zip -g ./function.zip -r blog
             zip -g ./function.zip blog.db
 
