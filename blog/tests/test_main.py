@@ -7,8 +7,10 @@ client = TestClient(app)
 
 def test_read_main():
     response = client.get("/")
+    response_body = response.json()
     assert response.status_code == 200
-    assert response.json == {"message": "ok!"}
+    assert response_body["message"] == "Hello!"
+
 
 def test_read_main_docs():
     response = client.get("/docs")

@@ -12,7 +12,7 @@ app = FastAPI()
 
 @app.get("/")
 async def root():
-    return {"message": "ok!"}
+    return {"message": "Hello!"}
 
 
 app.include_router(authentication.router)
