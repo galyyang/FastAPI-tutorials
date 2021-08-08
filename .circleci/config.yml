@@ -63,11 +63,11 @@ workflows:
             only:
               - cicd
 
-      - deploy-dev:
-        context: cicd-fastapi
-        requires:
-          - build-and-test
-        filters:
-          branches:
-            only:
-              - cicd
+#      - deploy-dev:
+#        context: cicd-fastapi
+#        requires:
+#          - build-and-test
+#        filters:
+#          branches:
+#            only:
+#              - cicd
