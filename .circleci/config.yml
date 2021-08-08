@@ -76,7 +76,7 @@ jobs:
 workloads:
   build-test-and-deploy:
     jobs:
-      -build-and-test:
+      - build-and-test:
         context: cicd-fastapi
         filters:
           branches:
