@@ -38,8 +38,10 @@ jobs:
       - run:
           name: Setup python venv
           command: |
-            python3 -m venv venv
-            . venv/bin/activate
+            virtualenv -p python3.8 env
+            echo "source ./env/bin/activate" >> $BASH_ENV
+#            python3 -m venv venv
+#            . venv/bin/activate
       - run:
           name: Install Dependencies
           command:
