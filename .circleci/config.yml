@@ -74,3 +74,23 @@ jobs:
       - run:
           name: Deploy new Lambda
           command: aws lambda update-function-code --function-name serverless-fastapi-lamda --s3-bucket cicd-fastapi --s3-key function.zip
+
+
+workloads:
+  build-test-and-deploy:
+    jobs:
+      - build-and-test:
+        context: cicd-fastapi
+        filters:
+          branches:
+            only:
+              - cicd
+
+#      - deploy-dev:
+#        context: cicd-fastapi
+#        requires:
+#          - build-and-test
+#        filters:
+#          branches:
+#            only:
+#              - cicd
