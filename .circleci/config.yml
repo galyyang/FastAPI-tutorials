@@ -36,7 +36,7 @@ jobs:
           paths:
             - function.zip
 
-  deply-dev:
+  deploy-dev:
     executor: aws-cli/default
     steps:
       - attach_workspace:
@@ -63,11 +63,11 @@ workflows:
             only:
               - cicd
 
-#      - deploy-dev:
-#        context: cicd-fastapi
-#        requires:
-#          - build-and-test
-#        filters:
-#          branches:
-#            only:
-#              - cicd
+      - deploy-dev:
+        context: cicd-fastapi
+        requires:
+          - build-and-test
+        filters:
+          branches:
+            only:
+              - cicd
