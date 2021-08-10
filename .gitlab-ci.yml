@@ -43,7 +43,7 @@ build-job:       # This job runs in the build stage, which runs first.
       - function-gitlab.zip
     expire_in: 20 minutes
 
-unit-test-job:   # This job runs in the test stage.
+test-job:   # This job runs in the test stage.
   stage: test    # It only starts when the job in the build stage completes successfully.
   script:
     - echo "Running unit tests..."
@@ -53,9 +53,11 @@ deploy-job:      # This job runs in the deploy stage.
   stage: deploy  # It only runs when *both* jobs in the test stage complete successfully.
   script:
     - echo "Install AWS CLI"
-    - ls -l
+    - export
     - curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
     - unzip awscliv2.zip
     - ./aws/install
     - echo "Update file to s3"
     - aws s3 cp function-gitlab.zip s3://cicd-fastapi/function-gitlab.zip
+  dependencies:
+    - build-job
