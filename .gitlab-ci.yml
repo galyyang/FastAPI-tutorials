@@ -49,5 +49,9 @@ unit-test-job:   # This job runs in the test stage.
 deploy-job:      # This job runs in the deploy stage.
   stage: deploy  # It only runs when *both* jobs in the test stage complete successfully.
   script:
-    - echo "Deploying application..."
+    - echo "Install AWS CLI"
+    - curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+    - unzip awscliv2.zip
+    - ./aws/install
     - echo "Application successfully deployed."
+    - aws s3 cp function-gitlab.zip s3://cicd-fastapi/function-gitlab.zip
