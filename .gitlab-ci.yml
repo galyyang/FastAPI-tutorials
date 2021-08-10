@@ -23,8 +23,8 @@ before_script:
   - pip install -r requirements.txt
 
 stages:          # List of stages for jobs, and their order of execution
-  - build
   - test
+  - build
   - deploy
 
 build-job:       # This job runs in the build stage, which runs first.
@@ -32,9 +32,9 @@ build-job:       # This job runs in the build stage, which runs first.
   script:
     - echo "Running Building images..."
     - cd env/lib/python3.8/site-packages
-    - zip -r9 ../../../../function.zip .
-    - zip -g ./function.zip blog.db .env -r blog
-    - ls -l function.zip
+    - zip -r9 ../../../../function-gitlab.zip .
+    - zip -g ./function-gitlab.zip blog.db .env -r blog
+    - ls -l function-gitlab.zip
     - pwd
 
 unit-test-job:   # This job runs in the test stage.
